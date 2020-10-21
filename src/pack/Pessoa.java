@@ -7,9 +7,9 @@ package pack;
  */
 public class Pessoa {
     
-    private double x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-    private byte op;
+    protected double x1 = 0, x2 = 0, y1 = 0, y2 = 0;
 
+    
     public double getX1() {
         return x1;
     }
@@ -41,25 +41,4 @@ public class Pessoa {
     public void setY2(double y2) {
         this.y2 = y2;
     }
-
-    public byte getOp() {
-        return op;
-    }
-
-    public void setOp(byte op) {
-        this.op = op;
-    }
-    
-    public double calcularDistancias(double x1, double x2, double y1, double y2){
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
-    @Override
-    public String toString() {
-        return "x1: " + this.x1 + "      |      x2: " + this.x2 + "\n"
-                + "y1: " + this.y1 + "      |      y2: " + this.y2 + "\n\n"
-                + "Distancia Total: " + calcularDistancias(this.x1, this.x2, this.y1, this.y2);
-    }
-    
-    
 }
