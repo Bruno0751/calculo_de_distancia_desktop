@@ -1,6 +1,6 @@
 package pack;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 /**
  *
  * @author bruno Gressler da Silveira
@@ -9,53 +9,43 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String args[]){
-        Scanner leia = new Scanner(System.in);
         
-        double x1 = 0, x2 = 0, y1 = 0, y2 = 0, resultado;
-        byte op;
+        Pessoa objPessoa = new Pessoa();        
         
         try{
             do{
-                System.out.println("::::::O que Deseja Fazer?:::::::::::::\n"
+                objPessoa.setOp(Byte.parseByte(JOptionPane.showInputDialog("::::::O que Deseja Fazer?:::::::::::::\n"
                         + "0 - Sair                            ::\n"
                         + "1 - Calcular Distância              ::\n"
-                        + "::::::::::::::::::::::::::::::::::::::");
-                op = leia.nextByte();
-                switch(op){
+                        + "::::::::::::::::::::::::::::::::::::::")));
+                switch(objPessoa.getOp()){
                     case 0:
                         
-                        Tela.limparTela();
-                        System.out.print("Sistema Encerrado");
+                        JOptionPane.showMessageDialog(null, "Sistema Encerrado");
+                        System.exit(0);
                         break;
                     case 1:
                         
-                        Tela.limparTela();
-                        System.out.print("Escreva a Distância x1: ");
-                        x1 = leia.nextDouble();
-                        System.out.print("Escreva a Distância x2: ");
-                        x2 = leia.nextDouble();
-                        System.out.print("Escreva a Distância y1: ");
-                        y1 = leia.nextDouble();
-                        System.out.print("Escreva a Distância y2: ");
-                        y2 = leia.nextDouble();
+                        objPessoa.setX1(Double.parseDouble(JOptionPane.showInputDialog("Escreva a Distância x1: ")));
+                        
+                        objPessoa.setX2(Double.parseDouble(JOptionPane.showInputDialog("Escreva a Distância x2: ")));
+                      
+                        objPessoa.setY1(Double.parseDouble(JOptionPane.showInputDialog("Escreva a Distância y1: ")));
+                        
+                        objPessoa.setY2(Double.parseDouble(JOptionPane.showInputDialog("Escreva a Distância y2: ")));
 
-                        resultado = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-
-                        System.out.print("\n\nO Resultado é: " + resultado + "\n\n");
+                        JOptionPane.showMessageDialog(null, objPessoa.toString());
                         break;
                     default:
                         
-                        Tela.limparTela();
-                        System.out.print("Opção Inválida\n\n");
+                        JOptionPane.showMessageDialog(null, "Opção Inválida");
                         break;
                 }
                 
-            }while(op != 0);
+            }while(objPessoa.getOp() != 0);
         }catch(Exception erro){
             
-            Tela.limparTela();
-            System.out.print("Erro: " + erro + "\n\n");
-            Main.main(args);
+            JOptionPane.showMessageDialog(null, "Erro: " + erro);
         }
     }
 }
